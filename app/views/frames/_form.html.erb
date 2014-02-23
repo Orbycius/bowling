@@ -1,0 +1,22 @@
+<%= form_tag '/frames' do %>
+	<%= hidden_field_tag :game_id , @game.id %>
+
+	<div class="field">
+	  	<%= label_tag :ball_1 %><br />
+  		<%= number_field_tag :ball_1, '1st ball'%>
+	</div>
+	<div class="field">
+	  	<%= label_tag :ball_2 %><br />
+  		<%= number_field_tag :ball_2, '2nd ball'%>
+	</div>
+	<% if @game.is_last_frame?  %>	
+		<div class="field">
+	  		<%= label_tag :ball_3 %><br />
+  			<%= number_field_tag :ball_3, '3rd ball'%>
+		</div>
+	<% end %>
+
+	<div class="actions">
+	  <%= submit_tag 'Next frame' %>
+	</div>
+<% end %>

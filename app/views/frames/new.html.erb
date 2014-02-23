@@ -1,0 +1,26 @@
+<h1>Game <%= @game.id %> - Frame <%= @game.current_frame + 1 %></h1>
+
+<% if @game.current_frame > 0%>
+	<%= render 'games/results' %>
+	<br />
+	<br />
+	<br />
+	<br />
+<% end %>
+
+<% unless @game.finished? %>
+	<%= render 'form' %>
+<% end %>
+
+<% if flash[:errors].present? %>
+<div id="errors">
+  	<p>D'oh! You play was not correct because of the following errors</p>
+  	<% flash[:errors].each do |error| %>
+  		<p> - <%= error %></p>
+  	<% end %>
+	</div>
+<% end %>
+
+<div>
+	<%= link_to 'Back', games_path %>
+</div>

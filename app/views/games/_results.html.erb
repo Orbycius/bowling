@@ -1,0 +1,34 @@
+<div>
+	<% @game.results.each_with_index do |result, i| %>
+	<div class="wrapper">
+		<div class="first_ball">
+				<% if result[:strike] %>
+		          X
+		        <% else %>
+		            <%= result[:ball_1] %>
+		        <% end %>
+      	</div>
+		<div class="second_ball">
+				<% if result[:spare] %>
+		          /
+		        <% elsif result[:ball_2] == 10 %>
+		         X
+				<% else %>		
+		            <%= result[:ball_2].nil? ? "&nbsp;".html_safe : result[:ball_2] %>
+		        <% end %>
+      	</div>
+		<% if result[:last_frame] %>
+			<div class="third_ball">
+		          <% if result[:ball_3] == 10 %>
+		          	X
+		          <% else %>
+		            <%= result[:ball_3].nil? ? "&nbsp;".html_safe : result[:ball_3] %>
+		          <% end %>
+		      </div>
+		<% end %>
+		<div class="points">
+			<%= result[:points] %>
+		</div>
+	</div>	
+	<% end %>		
+</div>		
